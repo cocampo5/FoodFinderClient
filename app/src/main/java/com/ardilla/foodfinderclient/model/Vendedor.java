@@ -2,7 +2,7 @@ package com.ardilla.foodfinderclient.model;
 
 public class Vendedor {
     private int id,celular;
-    private String nombre,apellido;
+    private String nombre,apellido,email;
     private double latitud, longitud;
 
     public int getId() {return id;}
@@ -50,4 +50,8 @@ public class Vendedor {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
 }
