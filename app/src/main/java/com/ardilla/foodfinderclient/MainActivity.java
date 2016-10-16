@@ -26,10 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    // Movies json url
-    private static final String url = "http://ec2-54-148-64-153.us-west-2.compute.amazonaws.com:3000/vendedors.json";
-    private List<Vendedor> VendedorList = new ArrayList<Vendedor>();
+    private List<Vendedor> VendedorList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,52 +37,14 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_SHORT).show();
+                RequestJson req = new RequestJson();
+                VendedorList = req.doQuery();
+                Toast.makeText(getApplicationContext(), VendedorList.get(0).getNombre(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        hacerReq();
 
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void hacerReq(){
-        // Creating volley request obj
-        JsonArrayRequest vendedorReq = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject obj = response.getJSONObject(i);
-                                Vendedor vendedor = new Vendedor();
-                                vendedor.setNombre(obj.getString("nombre"));
-                                vendedor.setApellido(obj.getString("apellido"));
-                                vendedor.setCelular(obj.getInt("celular"));
-                                vendedor.setLatitud(((Number) obj.get("latitud"))
-                                        .doubleValue());
-                                vendedor.setLongitud(((Number) obj.get("longitud"))
-                                        .doubleValue());
-                                vendedor.setEmail(obj.getString("email"));
-                                VendedorList.add(vendedor);
-                                Toast.makeText(getApplicationContext(), vendedor.getNombre(), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-            }
-        });
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(vendedorReq, TAG);
-    }
+
 }
