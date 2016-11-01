@@ -22,7 +22,7 @@ import java.util.List;
 public class RequestJson {
 
     private static final String TAG = RequestJson.class.getSimpleName();
-    private static final String url = "http://ec2-54-148-64-153.us-west-2.compute.amazonaws.com:3000/vendedors.json";
+    private static final String url = "http://104.196.212.66:3000/vendedors.json";
     private List<Vendedor> VendedorList = new ArrayList<Vendedor>();
 
     public RequestJson(){
