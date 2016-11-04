@@ -5,7 +5,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.ardilla.foodfinderclient.model.Vendedor;
+import com.ardilla.foodfinderclient.model.VendedorDTO;
 import com.ardilla.foodfinderclient.controller.AppController;
 
 import org.json.JSONArray;
@@ -23,13 +23,10 @@ public class RequestJson {
 
     private static final String TAG = RequestJson.class.getSimpleName();
     private static final String url = "http://104.196.212.66:3000/vendedors.json";
-    private List<Vendedor> VendedorList = new ArrayList<Vendedor>();
+    private List<VendedorDTO> vendedorDTOList = new ArrayList<VendedorDTO>();
 
-    public RequestJson(){
-
-    }
-
-    public List<Vendedor> doQuery(){
+    public void doQuery(){
+        vendedorDTOList = new ArrayList<>();
         // Creating volley request obj
         JsonArrayRequest vendedorReq = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
@@ -40,17 +37,16 @@ public class RequestJson {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
-                                Vendedor vendedor = new Vendedor();
-                                vendedor.setNombre(obj.getString("nombre"));
-                                vendedor.setApellido(obj.getString("apellido"));
-                                vendedor.setCelular(obj.getInt("celular"));
-                                vendedor.setLatitud(((Number) obj.get("latitud"))
+                                VendedorDTO vendedorDTO = new VendedorDTO();
+                                vendedorDTO.setNombre(obj.getString("nombre"));
+                                vendedorDTO.setApellido(obj.getString("apellido"));
+                                vendedorDTO.setCelular(obj.getInt("celular"));
+                                vendedorDTO.setLatitud(((Number) obj.get("latitud"))
                                         .doubleValue());
-                                vendedor.setLongitud(((Number) obj.get("longitud"))
+                                vendedorDTO.setLongitud(((Number) obj.get("longitud"))
                                         .doubleValue());
-                                vendedor.setEmail(obj.getString("email"));
-                                VendedorList.add(vendedor);
-                                //Toast.makeText(getApplicationContext(), vendedor.getNombre(), Toast.LENGTH_SHORT).show();
+                                vendedorDTO.setEmail(obj.getString("email"));
+                                vendedorDTOList.add(vendedorDTO);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -64,6 +60,5 @@ public class RequestJson {
         });
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(vendedorReq, TAG);
-        return VendedorList;
     }
 }

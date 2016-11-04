@@ -1,6 +1,6 @@
 package com.ardilla.foodfinderclient.model;
 
-public class Vendedor {
+public class VendedorDTO {
     private int id,celular;
     private String nombre,apellido,email;
     private double latitud, longitud;
