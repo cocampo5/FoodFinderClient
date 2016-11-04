@@ -13,7 +13,8 @@ public class Splash extends AppCompatActivity {
 
     private static final long SPLASH_SCREEN_DELAY = 2000;
 
-    public Splash(){}
+    public Splash() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

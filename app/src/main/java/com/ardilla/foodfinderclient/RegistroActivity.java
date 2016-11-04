@@ -7,24 +7,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class RegistroActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registro);
 
         Button button = (Button) findViewById(R.id.btn_1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "Botón 1",
-                //        Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), "Registrando...",
+                        Toast.LENGTH_LONG).show();
                 Intent registro = new Intent().setClass(
-                        MainActivity.this, RegistroActivity.class);
+                        RegistroActivity.this, MapsActivity.class);
                 startActivity(registro);
-                //finish();
+                finish();
             }
         });
 
@@ -32,11 +32,8 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Botón 2",
-                        Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
-
-
 }

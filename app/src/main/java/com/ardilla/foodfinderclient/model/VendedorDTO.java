@@ -1,11 +1,13 @@
 package com.ardilla.foodfinderclient.model;
 
 public class VendedorDTO {
-    private int id,celular;
-    private String nombre,apellido,email;
+    private int id, celular;
+    private String nombre, apellido, email;
     private double latitud, longitud;
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -51,7 +53,11 @@ public class VendedorDTO {
         this.longitud = longitud;
     }
 
-    public String getEmail() {return email;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setEmail(String email) {this.email = email;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

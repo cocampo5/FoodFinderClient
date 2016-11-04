@@ -1,4 +1,5 @@
 package com.ardilla.foodfinderclient;
+
 import android.util.Log;
 
 import com.android.volley.Response;
@@ -25,7 +26,7 @@ public class RequestJson {
     private static final String url = "http://104.196.212.66:3000/vendedors.json";
     private List<VendedorDTO> vendedorDTOList = new ArrayList<VendedorDTO>();
 
-    public void doQuery(){
+    public void doQuery() {
         vendedorDTOList = new ArrayList<>();
         // Creating volley request obj
         JsonArrayRequest vendedorReq = new JsonArrayRequest(url,
@@ -60,5 +61,9 @@ public class RequestJson {
         });
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(vendedorReq, TAG);
+    }
+
+    public List<VendedorDTO> getVendedorDTOList() {
+        return vendedorDTOList;
     }
 }
