@@ -142,9 +142,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void refreshMap() {
         for (int i = 0; i < vendedorDTOList.size(); i++) {
-
             String name = vendedorDTOList.get(i).getNombre();
-            String apellido = vendedorDTOList.get(i).getNombre();
+            String apellido = vendedorDTOList.get(i).getApellido();
             double lat = vendedorDTOList.get(i).getLatitud();
             double lon = vendedorDTOList.get(i).getLongitud();
             Log.i("HOLI", name+" "+ apellido);

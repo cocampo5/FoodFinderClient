@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         Button button = (Button) findViewById(R.id.btn_1);
         button.setOnClickListener(new View.OnClickListener() {
@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Botón 1",
                 //        Toast.LENGTH_LONG).show();
 
-                Intent registro = new Intent().setClass(
-                        MainActivity.this, RegistroActivity.class);
-                startActivity(registro);
+                Intent Login = new Intent().setClass(
+                        LoginActivity.this, MapsActivity.class);
+                startActivity(Login);
                 //finish();
             }
         });
@@ -34,12 +34,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Login",
                 //        Toast.LENGTH_LONG).show();
-                Intent login = new Intent().setClass(
-                        MainActivity.this, LoginActivity.class);
-                startActivity(login);
+                finish();
             }
         });
     }
-
-
 }
